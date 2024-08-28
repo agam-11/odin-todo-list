@@ -5,6 +5,7 @@ function CreateTodo(title, description, dueDate, priority) {
   const getDescription = () => description;
   const getDueDate = () => dueDate;
   const getPriority = () => priority;
+  const getCompleted = () => completed;
 
   const setTitle = (newTitle) => {
     title = newTitle;
@@ -28,6 +29,7 @@ function CreateTodo(title, description, dueDate, priority) {
     getDescription,
     getDueDate,
     getPriority,
+    getCompleted,
     setTitle,
     setDescription,
     setDueDate,

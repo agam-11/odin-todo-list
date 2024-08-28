@@ -22,7 +22,8 @@ body {
   flex-direction: column;
 }
 
-.new {
+.new-todo-button,
+.new-project-button {
   align-self: flex-end;
   font-size: 30px;
   padding: 0px;
@@ -31,7 +32,6 @@ body {
   border-radius: 50%;
   text-align: center;
   margin: 10px;
-
   border: none;
 }
 
@@ -41,4 +41,14 @@ body {
 
 #sidebar-container {
   padding: 10px;
+}
+
+.todo-card {
+  display: flex;
+  align-items: center;
+  background-color: antiquewhite;
+  justify-content: space-between;
+
+  padding-inline: 20px;
+  border-radius: 10px;
 }
