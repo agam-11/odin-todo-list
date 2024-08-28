@@ -1,0 +1,44 @@
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+body {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1.4fr 3fr;
+}
+
+#sidebar {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+}
+#main {
+  background-color: pink;
+  display: flex;
+  flex-direction: column;
+}
+
+.new {
+  align-self: flex-end;
+  font-size: 30px;
+  padding: 0px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  text-align: center;
+  margin: 10px;
+
+  border: none;
+}
+
+#main-container {
+  padding: 10px;
+}
+
+#sidebar-container {
+  padding: 10px;
+}
