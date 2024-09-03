@@ -6,6 +6,7 @@ function CreateProject(name, oldId = null) {
     id = ++projectIdCounter;
   } else {
     id = oldId;
+    projectIdCounter = oldId;
   }
   const getName = () => name;
   const getId = () => id;

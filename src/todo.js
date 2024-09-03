@@ -1,13 +1,21 @@
 let todoIdCounter = 0;
 
-function CreateTodo(title, description, dueDate, priority, oldId = null) {
-  let completed = false;
+function CreateTodo(
+  title,
+  description,
+  dueDate,
+  priority,
+  oldCompleted = false,
+  oldId = null
+) {
+  let completed = oldCompleted;
   let id;
 
   if (oldId == null) {
     id = ++todoIdCounter;
   } else {
     id = oldId;
+    todoIdCounter = oldId;
   }
 
   const getTitle = () => title;

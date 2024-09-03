@@ -9,6 +9,7 @@ import {
   addProjectToDom,
   removeProjectFromDom,
 } from "./dom.js";
+import { retrieveProjects, storeProjects } from "./localStroage.js";
 
 // initialization starts
 let newProjectButton = document.querySelector(".new-project-button");
@@ -17,11 +18,18 @@ let newTodoForm = document.querySelector("form");
 let body = document.querySelector("body");
 let createTodoDialog = document.querySelector("#create-todo-dialog");
 
-let projectArray = [];
-let mainProject = CreateProject("Main");
-projectArray.push(mainProject);
-addProjectToDom(mainProject);
-let currentProject = mainProject;
+let projectArray = retrieveProjects();
+
+projectArray.forEach((smth) => {
+  addProjectToDom(smth);
+});
+
+let currentProject = projectArray[0];
+
+projectTodosInit(currentProject.getTodos());
+
+// tesing storage starts
+// testing storage ends
 // initialization ends
 
 newProjectButton.addEventListener("click", () => {
@@ -29,6 +37,7 @@ newProjectButton.addEventListener("click", () => {
     let projectName = document.querySelector("#new-project-input").value;
     let project = CreateProject(projectName);
     projectArray.push(project);
+    storeProjects(projectArray);
     addProjectToDom(project);
   }
 });
@@ -48,6 +57,7 @@ newTodoForm.addEventListener("submit", (event) => {
 
   let todo = CreateTodo(title, description, dueDate, priority);
   currentProject.addTodo(todo);
+  storeProjects(projectArray);
   addTodoToDom(todo);
   newTodoForm.reset();
   createTodoDialog.close();
@@ -57,10 +67,8 @@ body.addEventListener("click", (e) => {
   let todoCard = e.target.closest(".todo-card");
   if (todoCard) {
     let todoId = todoCard.getAttribute("data-id");
-    // console.log(todoId);
     let todo = getTodoById(currentProject.getTodos(), todoId);
-    // console.log(todoArray);
-    // console.log(todo);
+
     showTodoInDom(todo);
   }
 
@@ -70,6 +78,7 @@ body.addEventListener("click", (e) => {
     let project = getProjectById(projectArray, projectId);
     currentProject = project;
     const projectTodos = currentProject.getTodos();
+
     projectTodosInit(projectTodos, projectCard);
   }
 });

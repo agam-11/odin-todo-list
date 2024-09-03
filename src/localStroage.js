@@ -58,35 +58,40 @@ function storeProjects(projectArray) {
 }
 
 function retrieveProjects() {
-  projectsArray = JSON.parse(localStorage.getItem("projects")) || [];
+  let projectsArray = JSON.parse(localStorage.getItem("projects")) || [];
+  let recreatedProjectsArray = [];
+  if (projectsArray.length > 0) {
+    projectsArray.forEach((project) => {
+      let projectName = project.projectName;
+      let projectId = project.projectId;
+      let allTodos = project.todoStorageArray;
+      project = CreateProject(projectName, projectId);
+      allTodos.forEach((todo) => {
+        let todoTitle = todo.todoTitle;
+        let todoDescription = todo.todoDescription;
+        let todoDueDate = todo.todoDueDate;
+        let todoPriority = todo.todoPriority;
+        let todoCompleted = todo.todoCompleted;
+        let todoId = todo.todoId;
 
-  recreatedProjectsArray = [];
-
-  projectsArray.forEach((project) => {
-    let projectName = project.projectName;
-    let projectId = project.projectId;
-    let allTodos = project.todoStorageArray;
-    project = CreateProject(projectName, projectId);
-    allTodos.forEach((todo) => {
-      let todoTitle = todo.todoTitle;
-      let todoDescription = todo.todoDescription;
-      let todoDueDate = todo.todoDueDate;
-      let todoPriority = todo.todoPriority;
-      let todoCompelted = todo.todoCompleted;
-      let todoId = todo.todoId;
-
-      todo = CreateTodo(
-        todoTitle,
-        todoDescription,
-        todoDueDate,
-        todoPriority,
-        todoCompelted,
-        todoId
-      );
-      project.addTodo(todo);
+        todo = CreateTodo(
+          todoTitle,
+          todoDescription,
+          todoDueDate,
+          todoPriority,
+          todoCompleted,
+          todoId
+        );
+        project.addTodo(todo);
+      });
+      recreatedProjectsArray.push(project);
     });
-    recreatedProjectsArray.push(project);
-  });
+  } else {
+    let mainProject = CreateProject("Main");
+    recreatedProjectsArray.push(mainProject);
+  }
 
   return recreatedProjectsArray;
 }
+
+export { storeProjects, retrieveProjects };

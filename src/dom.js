@@ -22,10 +22,20 @@ function addTodoToDom(todo) {
 
 function projectTodosInit(todoArray, projectCard) {
   const mainContainerDiv = document.querySelector("#main-container");
-  const allProjects = document.querySelectorAll(".project-card");
-  allProjects.forEach((project) => (project.style.backgroundColor = "bisque"));
-  projectCard.style.backgroundColor = "red";
+
+  if (projectCard != null) {
+    const allProjects = document.querySelectorAll(".project-card");
+    allProjects.forEach(
+      (project) => (project.style.backgroundColor = "bisque")
+    );
+    projectCard.style.backgroundColor = "red";
+  } else if (projectCard == null) {
+    const mainProject = document.querySelector(".project-card");
+    mainProject.style.backgroundColor = "red";
+  }
+
   mainContainerDiv.innerHTML = "";
+  // alert("its ok");
   if (todoArray.length > 0) {
     todoArray.forEach((todo) => {
       const todoCard = document.createElement("div");
