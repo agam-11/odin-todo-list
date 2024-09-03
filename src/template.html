@@ -7,11 +7,56 @@
   </head>
   <body>
     <div id="sidebar">
-      <button class="new-project-button">+</button>
+      <div class="new-project-button-container">
+        <input type="text" id="new-project-input">
+        <button class="new-project-button">+</button>
+      </div>
       <div id="sidebar-container"></div>
     </div>
     <div id="main">
       <button class="new-todo-button">+</button>
+      <dialog id="create-todo-dialog">
+        <form>
+          <input
+            type="text"
+            placeholder="Title"
+            name="title-input"
+            id="title-input-form"
+          />
+          <input
+            type="text"
+            placeholder="description"
+            name="description-input"
+            id="description-input-form"
+          />
+
+          <input type="date" name="due-date-input" id="due-date-input-form" />
+
+          <input
+            type="radio"
+            name="priority-input"
+            id="red-priority-input-form"
+            value="red"
+          />
+          <input
+            type="radio"
+            name="priority-input"
+            id="yellow-priority-input-form"
+            value="yellow"
+          />
+          <input
+            type="radio"
+            name="priority-input"
+            id="green-priority-input-form"
+            value="green"
+          />
+
+          <button type="reset"">cancel</button>
+          <button type="submit">done</button>
+        </form>
+      </dialog>
+      <dialog id="show-todo-dialog">
+      </dialog>
       <div id="main-container"></div>
     </div>
   </body>

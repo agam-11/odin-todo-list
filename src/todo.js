@@ -1,11 +1,21 @@
-function CreateTodo(title, description, dueDate, priority) {
+let todoIdCounter = 0;
+
+function CreateTodo(title, description, dueDate, priority, oldId = null) {
   let completed = false;
+  let id;
+
+  if (oldId == null) {
+    id = ++todoIdCounter;
+  } else {
+    id = oldId;
+  }
 
   const getTitle = () => title;
   const getDescription = () => description;
   const getDueDate = () => dueDate;
   const getPriority = () => priority;
   const getCompleted = () => completed;
+  const getId = () => id;
 
   const setTitle = (newTitle) => {
     title = newTitle;
@@ -30,6 +40,7 @@ function CreateTodo(title, description, dueDate, priority) {
     getDueDate,
     getPriority,
     getCompleted,
+    getId,
     setTitle,
     setDescription,
     setDueDate,
@@ -38,4 +49,10 @@ function CreateTodo(title, description, dueDate, priority) {
   };
 }
 
-export { CreateTodo };
+function getTodoById(array, id) {
+  return array.find((todo) => {
+    return todo.getId() == id;
+  });
+}
+
+export { CreateTodo, getTodoById };

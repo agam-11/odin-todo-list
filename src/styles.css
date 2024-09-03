@@ -1,9 +1,19 @@
+/* css resets start*/
+
 html,
 body {
   margin: 0px;
   padding: 0px;
   height: 100%;
 }
+
+input {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;
+}
+
+/* css resets end */
 
 body {
   background-color: black;
@@ -12,14 +22,15 @@ body {
 }
 
 #sidebar {
-  background-color: red;
+  background-color: darkred;
   display: flex;
   flex-direction: column;
 }
 #main {
-  background-color: pink;
+  background-color: #aa336a;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .new-todo-button,
@@ -50,5 +61,42 @@ body {
   justify-content: space-between;
 
   padding-inline: 20px;
+  margin-block: 10px;
   border-radius: 10px;
+}
+
+.project-card {
+  background-color: bisque;
+
+  padding-block: 10px;
+  padding-inline: 10px;
+  margin-block: 10px;
+  border-radius: 10px;
+}
+
+.project-card-name {
+  margin: 0px;
+}
+
+#create-todo-dialog {
+  box-sizing: border-box;
+  border-radius: 10px;
+  /* height: 90%; */
+  width: 60%;
+}
+
+form {
+}
+
+.new-project-button-container {
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.new-project-button-container input {
+  flex-basis: 50%;
+  border-radius: 5px;
 }
